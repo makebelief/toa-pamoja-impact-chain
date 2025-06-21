@@ -1,5 +1,8 @@
+
 import { Shield, Coins, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+console.log("Button import:", Button);
 
 const HowItWorks = () => {
   const steps = [
@@ -19,6 +22,8 @@ const HowItWorks = () => {
       description: "Receive NFT-style impact receipts and track real outcomes through photo updates and verified milestones."
     }
   ];
+
+  console.log("HowItWorks component rendering");
 
   return (
     <section className="py-20 bg-gradient-to-br from-green-50 to-orange-50">
@@ -51,12 +56,19 @@ const HowItWorks = () => {
               Join thousands of donors building a better future for African communities
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3">
-                Browse Campaigns
-              </Button>
-              <Button variant="outline" size="lg" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-3">
-                Start Your Campaign
-              </Button>
+              {Button && (
+                <>
+                  <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3">
+                    Browse Campaigns
+                  </Button>
+                  <Button variant="outline" size="lg" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-3">
+                    Start Your Campaign
+                  </Button>
+                </>
+              )}
+              {!Button && (
+                <div className="text-red-500">Button component not available</div>
+              )}
             </div>
           </div>
         </div>

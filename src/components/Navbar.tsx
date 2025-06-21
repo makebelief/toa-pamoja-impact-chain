@@ -2,13 +2,14 @@
 import { Button } from "@/components/ui/button";
 import { User, LogIn, LogOut } from "lucide-react";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const location = useLocation();
 
   const handleLogin = () => {
-    // TODO: Implement actual authentication
     setIsLoggedIn(true);
     setUser({ name: "John Donor", email: "john@example.com" });
   };
@@ -18,20 +19,37 @@ const Navbar = () => {
     setUser(null);
   };
 
+  const isActive = (path: string) => location.pathname === path;
+
   return (
-    <nav className="bg-white shadow-sm border-b sticky top-0 z-50">
+    <nav className="bg-white/95 backdrop-blur-sm shadow-sm border-b sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold">
-              Toa<span className="text-orange-500">Pamoja</span>
-            </h1>
+            <Link to="/" className="text-2xl font-bold">
+              Toa<span className="text-blue-600">Pamoja</span>
+            </Link>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#campaigns" className="text-gray-700 hover:text-orange-500">Browse Campaigns</a>
-            <a href="#how-it-works" className="text-gray-700 hover:text-orange-500">How It Works</a>
-            <a href="#create" className="text-gray-700 hover:text-orange-500">Start Campaign</a>
+            <Link 
+              to="/campaigns" 
+              className={`transition-colors ${isActive('/campaigns') ? 'text-blue-600 font-semibold' : 'text-gray-700 hover:text-blue-600'}`}
+            >
+              Browse Campaigns
+            </Link>
+            <Link 
+              to="/about" 
+              className={`transition-colors ${isActive('/about') ? 'text-blue-600 font-semibold' : 'text-gray-700 hover:text-blue-600'}`}
+            >
+              How It Works
+            </Link>
+            <Link 
+              to="/create" 
+              className={`transition-colors ${isActive('/create') ? 'text-blue-600 font-semibold' : 'text-gray-700 hover:text-blue-600'}`}
+            >
+              Start Campaign
+            </Link>
           </div>
 
           <div className="flex items-center space-x-4">
@@ -54,7 +72,7 @@ const Navbar = () => {
             ) : (
               <Button 
                 onClick={handleLogin}
-                className="bg-orange-500 hover:bg-orange-600 flex items-center space-x-2"
+                className="bg-blue-600 hover:bg-blue-700 flex items-center space-x-2"
               >
                 <LogIn className="w-4 h-4" />
                 <span>Login</span>

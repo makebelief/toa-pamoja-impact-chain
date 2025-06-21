@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -79,17 +78,17 @@ const DonationModal = ({ campaign, isOpen, onClose }: DonationModalProps) => {
             </div>
           </div>
 
-          <div className="bg-gray-50 p-3 rounded-lg">
-            <p className="text-sm text-gray-600">
-              Your donation will be recorded on the blockchain for full transparency.
-              You'll receive an NFT impact receipt upon completion.
+          <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
+            <p className="text-sm text-blue-800">
+              Your donation goes directly to the community. You'll receive real updates 
+              showing exactly how your contribution creates impact.
             </p>
           </div>
 
           <Button 
             onClick={handleDonate} 
             disabled={!amount || processing}
-            className="w-full bg-orange-500 hover:bg-orange-600"
+            className="w-full bg-blue-600 hover:bg-blue-700"
           >
             {processing ? "Processing..." : `Donate ${amount} ${currency}`}
           </Button>

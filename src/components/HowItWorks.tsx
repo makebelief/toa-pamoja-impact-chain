@@ -1,5 +1,5 @@
-
 import { Shield, Coins, Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const HowItWorks = () => {
   const steps = [
